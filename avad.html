@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html class="html" lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	<!-- Google tag (gtag.js) -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=UA-194764434-1"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-194764434-1');
+</script>
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This site is optimized with the Yoast SEO plugin v20.12 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>55+ Best Pune Quotes and Captions For Instagram 2023</title>
+	<meta name="description" content="Pune Quotes and Captions 1. Pune is calling my name! 2. Pune is top of my bucket list. 3. I love Pune. 4. Life is short, and the world is" />
+	<link rel="canonical" href="https://republicquote.com/pune-quotes/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="55+ Best Pune Quotes and Captions For Instagram 2023" />
+	<meta property="og:description" content="Pune Quotes and Captions 1. Pune is calling my name! 2. Pune is top of my bucket list. 3. I love Pune. 4. Life is short, and the world is" />
+	<meta property="og:url" content="https://republicquote.com/pune-quotes/" />
+	<meta property="og:site_name" content="RepublicQuote" />
+	<meta property="article:publisher" content="https://www.facebook.com/RepublicQuote/" />
+	<meta property="article:published_time" content="2023-02-28T18:19:47+00:00" />
+	<meta property="article:modified_time" content="2023-02-28T18:20:12+00:00" />
+	<meta property="og:image" content="https://republicquote.com/wp-content/uploads/Pune-Quotes.webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="628" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta name="author" content="Karuna Nidhi" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@republicquotes1" />
+	<meta name="twitter:site" content="@republicquotes1" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Karuna Nidhi" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="7 minutes" />
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="RepublicQuote &raquo; Feed" href="https://republicquote.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RepublicQuote &raquo; Comments Feed" href="https://republicquote.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RepublicQuote &raquo; 55+ Best Pune Quotes and Captions for Instagram 2023 Comments Feed" href="https://republicquote.com/pune-quotes/feed/" />
+<link rel='stylesheet' id='wp-block-library-css' href='https://republicquote.com/wp-includes/css/dist/block-library/style.min.css?ver=6.3' media='all' />
+<style id='wp-block-library-theme-inline-css'>
+.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-bottom:4px solid;border-top:4px solid;color:currentColor;margin-bottom:1.75em}.wp-block-pullquote cite,.wp-block-pullquote footer,.wp-block-pullquote__citation{color:currentColor;font-size:.8125em;font-style:normal;text-transform:uppercase}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote.is-style-plain{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:0 0 1em}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video{margin:0 0 1em}.wp-block-template-part.has-background{margin-bottom:0;margin-top:0;padding:1.25em 2.375em}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='stylesheet' id='contact-form-7-css' href='https://republicquote.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1690041134' media='all' />
+<link data-minify="1" rel='stylesheet' id='notix-css' href='https://republicquote.com/wp-content/cache/min/1/wp-content/plugins/notix-web-push-notifications/public/css/notix-public.css?ver=1690041134' media='all' />
+<link rel='stylesheet' id='ez-toc-css' href='https://republicquote.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.52' media='all' />
+<style id='ez-toc-inline-css'>
+div#ez-toc-container p.ez-toc-title {font-size: 100%;}div#ez-toc-container p.ez-toc-title {font-weight: 400;}div#ez-toc-container ul li {font-size: 95%;}div#ez-toc-container nav ul ul li ul li {font-size: 90%!important;}
+.ez-toc-container-direction {direction: ltr;}.ez-toc-counter ul{counter-reset: item ;}.ez-toc-counter nav ul li a::before {content: counters(item, ".", decimal) ". ";display: inline-block;counter-increment: item;flex-grow: 0;flex-shrink: 0;margin-right: .2em; float: left; }.ez-toc-widget-direction {direction: ltr;}.ez-toc-widget-container ul{counter-reset: item ;}.ez-toc-widget-container nav ul li a::before {content: counters(item, ".", decimal) ". ";display: inline-block;counter-increment: item;flex-grow: 0;flex-shrink: 0;margin-right: .2em; float: left; }
+</style>
+<link rel='stylesheet' id='ez-toc-sticky-css' href='https://republicquote.com/wp-content/plugins/easy-table-of-contents/assets/css/ez-toc-sticky.min.css?ver=2.0.52' media='all' />
+<style id='ez-toc-sticky-inline-css'>
+.ez-toc-sticky-toggle-direction {direction: ltr;}.ez-toc-sticky-toggle-counter ul{counter-reset: item ;}.ez-toc-sticky-toggle-counter nav ul li a::before {content: counters(item, ".", decimal) ". ";display: inline-block;counter-increment: item;flex-grow: 0;flex-shrink: 0;margin-right: .2em; float: left; }
+.ez-toc-sticky-fixed{position: fixed;top: 0;left: 0;z-index: 999999;width: auto;max-width: 100%;} .ez-toc-sticky-fixed .ez-toc-sidebar {position: relative;top: auto;width: auto !important;height: 100%;box-shadow: 1px 1px 10px 3px rgb(0 0 0 / 20%);box-sizing: border-box;padding: 20px 30px;background: white;margin-left: 0 !important;height: auto; max-height: 100vh; overflow-y: auto;overflow-x: hidden;} .ez-toc-sticky-fixed .ez-toc-sidebar #ez-toc-sticky-container { max-width: auto; max-width: auto;padding: 0px;border: none;margin-bottom: 0;margin-top: 65px;} #ez-toc-sticky-container a { color: #000;} .ez-toc-sticky-fixed .ez-toc-sidebar .ez-toc-sticky-title-container {border-bottom-color: #EEEEEE;background-color: #FAFAFA;padding: 15px;border-bottom: 1px solid #e5e5e5;width: 100%;position: absolute;height: auto;top: 0;left: 0;z-index: 99999999;} .ez-toc-sticky-fixed .ez-toc-sidebar .ez-toc-sticky-title-container .ez-toc-sticky-title {font-weight: 550;font-size: 18px;color: #111;} .ez-toc-sticky-fixed .ez-toc-close-icon {-webkit-appearance: none;padding: 0;cursor: pointer;background: 0 0;border: 0;float: right;font-size: 30px;font-weight: 600;line-height: 1;position: relative;color: #000;top: -2px;text-decoration: none;} .ez-toc-open-icon {position: fixed;left: 0px;top: 8%;text-decoration: none;font-weight: bold;padding: 5px 10px 15px 10px;box-shadow: 1px -5px 10px 5px rgb(0 0 0 / 10%);background-color: #fff;display: inline-grid;line-height: 1.4;border-radius: 0px 10px 10px 0px;z-index: 999999;} .ez-toc-sticky-fixed.hide {-webkit-transition: opacity 0.3s linear, left 0.3s cubic-bezier(0.4, 0, 1, 1);-ms-transition: opacity 0.3s linear, left 0.3s cubic-bezier(0.4, 0, 1, 1);-o-transition: opacity 0.3s linear, left 0.3s cubic-bezier(0.4, 0, 1, 1);transition: opacity 0.3s linear, left 0.3s cubic-bezier(0.4, 0, 1, 1);left: -100%;} .ez-toc-sticky-fixed.show {-webkit-transition: left 0.3s linear, left 0.3s easy-out;-moz-transition: left 0.3s linear;-o-transition: left 0.3s linear;transition: left 0.3s linear;left: 0;} .ez-toc-open-icon span.arrow { font-size: 18px; } .ez-toc-open-icon span.text {font-size: 13px;writing-mode: vertical-rl;text-orientation: mixed;} @media screen  and (max-device-width: 640px) {.ez-toc-sticky-fixed .ez-toc-sidebar {min-width: auto;} .ez-toc-sticky-fixed .ez-toc-sidebar.show { padding-top: 35px; } .ez-toc-sticky-fixed .ez-toc-sidebar #ez-toc-sticky-container { min-width: 100%; } }
+</style>
+<link data-minify="1" rel='stylesheet' id='font-awesome-css' href='https://republicquote.com/wp-content/cache/min/1/wp-content/themes/oceanwp/assets/fonts/fontawesome/css/all.min.css?ver=1690041134' media='all' />
+<link data-minify="1" rel='stylesheet' id='simple-line-icons-css' href='https://republicquote.com/wp-content/cache/min/1/wp-content/themes/oceanwp/assets/css/third/simple-line-icons.min.css?ver=1690041134' media='all' />
+<link rel='stylesheet' id='oceanwp-style-css' href='https://republicquote.com/wp-content/themes/oceanwp/assets/css/style.min.css?ver=3.4.7' media='all' />
+<link rel='stylesheet' id='oceanwp-google-font-nobile-css' href='//fonts.googleapis.com/css?family=Nobile%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i&#038;subset=latin&#038;display=swap&#038;ver=6.3' media='all' />
+<link rel='stylesheet' id='oceanwp-google-font-montserrat-css' href='//fonts.googleapis.com/css?family=Montserrat%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i&#038;subset=latin&#038;display=swap&#038;ver=6.3' media='all' />
+<link rel='stylesheet' id='oceanwp-google-font-work-sans-css' href='//fonts.googleapis.com/css?family=Work+Sans%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i&#038;subset=latin&#038;display=swap&#038;ver=6.3' media='all' />
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://republicquote.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}.wp-embed-responsive .wp-has-aspect-ratio .rll-youtube-player{position:absolute;padding-bottom:0;width:100%;height:100%;top:0;bottom:0;left:0;right:0}
+</style>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1' id='jquery-migrate-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src='https://republicquote.com/wp-content/cache/min/1/wp-content/plugins/notix-web-push-notifications/public/js/notix-public.js?ver=1690041134' id='notix-js' defer></script>
+<link rel="https://api.w.org/" href="https://republicquote.com/wp-json/" /><link rel="alternate" type="application/json" href="https://republicquote.com/wp-json/wp/v2/posts/13251" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://republicquote.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.3" />
+<link rel='shortlink' href='https://republicquote.com/?p=13251' />
+<link rel="alternate" type="application/json+oembed" href="https://republicquote.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frepublicquote.com%2Fpune-quotes%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://republicquote.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frepublicquote.com%2Fpune-quotes%2F&#038;format=xml" />
+<script type="rocketlazyloadscript" id="script">
+    const ntxs = document.createElement("script");
+    ntxs.src = "https://notix.io/ent/current/enot.min.js";
+    ntxs.onload = (sdk) => {
+        sdk.startInstall({
+            sw: {
+                url: "https://republicquote.com/wp-content/plugins/notix-web-push-notifications/public/sw.enot.js"
+            },
+            appId: "100520eb66320c40ef33b651351bbb6",
+            loadSettings: true
+        })
+    };
+    document.head.append(ntxs);
+</script><style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="icon" href="https://republicquote.com/wp-content/uploads/2022/04/favicon-32x32-1.webp" sizes="32x32" />
+<link rel="icon" href="https://republicquote.com/wp-content/uploads/2022/04/favicon-32x32-1.webp" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://republicquote.com/wp-content/uploads/2022/04/favicon-32x32-1.webp" />
+<meta name="msapplication-TileImage" content="https://republicquote.com/wp-content/uploads/2022/04/favicon-32x32-1.png" />
+		<style id="wp-custom-css">
+			#site-header{position:relative;width:100%;background-color:#000;border-bottom:1px solid #f1f1f1;z-index:100}element.style{}.sidebar-box .widget-title{font-family:inherit}.widget-title{text-align:center;color:#fff;font-size:14px;font-weight:600;background:#0d4069;padding:8px}element.style{}p{margin:0 0 20px;color:#000000}.alignwide{margin:16px 0}element.style{}ol{list-style-type:decimal}ul,ol{margin:15px 0 15px 35px}element.style{}blockquote{quotes:none;border-left:3px solid #0d4069;color:#1a1a1a;font-family:Georgia,Times,"Times New Roman",serif;font-style:italic;line-height:1.8em;padding:1em 2em;position:relative;transition:border .2s ease-in-out;z-index:0;font-size:1em;margin:1.1em 2em;background:#f9f9f9}blockquote:before{content:"";position:absolute;top:50%;left:-4px;height:2em;background-color:#fff;width:5px;margin-top:-1em}blockquote:after{content:"\201D";position:absolute;top:50%;left:-0.5em;color:#0d4069;font-style:normal;text-align:center;text-indent:-2px;width:1em;margin-top:0;transition:.2s ease-in-out,transform .4s ease-in-out;font-size:3.4em;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.wp-block-quote{margin:1.5em auto;padding-left:20px;border-left-width:3px;border-style:solid;border-left-color:#0d4069}element.style{}.copy-the-code-wrap .copy-the-code-button{background:#0d4069;padding:0 20px;cursor:pointer;box-shadow:none;color:#ffffff;font-size:14px;font-weight:normal;border-radius:0;text-transform:capitalize;border:none;outline:none}.copy-the-code-inside-wrap .copy-the-code-button{position:relative;left:600px}.single-post .copy-the-code-button{left:0;border-radius:25px;text-transform:uppercase;font-style:initial;font-size:12px;background:linear-gradient(90deg,rgb(253,29,29) 27%,rgb(252,176,69) 100%);top:4px;padding:8px 18px;line-height:normal}.single-post .copy-the-code-button:hover{color:#000}.single-post .copy-the-code-button{margin:0 auto;display:block;top:0}}		</style>
+		<!-- OceanWP CSS -->
+<style type="text/css">
+/* General CSS */@media only screen and (min-width:960px){.content-area,.content-left-sidebar .content-area{width:75%}}@media only screen and (min-width:960px){.widget-area,.content-left-sidebar .widget-area{width:25%}}#scroll-top{bottom:74px}/* Header CSS */#site-logo #site-logo-inner,.oceanwp-social-menu .social-menu-inner,#site-header.full_screen-header .menu-bar-inner,.after-header-content .after-header-content-inner{height:70px}#site-navigation-wrap .dropdown-menu >li >a,.oceanwp-mobile-menu-icon a,.mobile-menu-close,.after-header-content-inner >a{line-height:70px}#site-header,.has-transparent-header .is-sticky #site-header,.has-vh-transparent .is-sticky #site-header.vertical-header,#searchform-header-replace{background-color:#1d2b35}#site-header-inner{padding:10px 0 0 0}#site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-width:200px}#site-header #site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-height:65px}@media (max-width:480px){#site-header #site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-height:55px}}#site-navigation-wrap .dropdown-menu >li >a{padding:0 6px}#site-navigation-wrap .dropdown-menu >li >a,.oceanwp-mobile-menu-icon a,#searchform-header-replace-close{color:#ffffff}#site-navigation-wrap .dropdown-menu >li >a .owp-icon use,.oceanwp-mobile-menu-icon a .owp-icon use,#searchform-header-replace-close .owp-icon use{stroke:#ffffff}#site-navigation-wrap .dropdown-menu >li >a:hover,.oceanwp-mobile-menu-icon a:hover,#searchform-header-replace-close:hover{color:#1f75c1}#site-navigation-wrap .dropdown-menu >li >a:hover .owp-icon use,.oceanwp-mobile-menu-icon a:hover .owp-icon use,#searchform-header-replace-close:hover .owp-icon use{stroke:#1f75c1}#site-navigation-wrap .dropdown-menu >.current-menu-item >a,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a,#site-navigation-wrap .dropdown-menu >.current-menu-item >a:hover,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a:hover{color:#ffffff}#site-navigation-wrap .dropdown-menu >li >a{background-color:#1d2b35}#site-navigation-wrap .dropdown-menu >li >a:hover,#site-navigation-wrap .dropdown-menu >li.sfHover >a{background-color:#000000}.dropdown-menu .sub-menu{min-width:212px}.dropdown-menu ul li a.menu-link{color:#eeee22}.dropdown-menu ul li a.menu-link .owp-icon use{stroke:#eeee22}#mobile-dropdown{max-height:500px}/* Top Bar CSS */#top-bar-wrap,.oceanwp-top-bar-sticky{background-color:rgba(129,215,66,0.26)}#top-bar-wrap{border-color:#000000}#top-bar-wrap,#top-bar-content strong{color:#000000}#top-bar-content a,#top-bar-social-alt a{color:#000000}#top-bar-content a:hover,#top-bar-social-alt a:hover{color:#000000}/* Footer Widgets CSS */#footer-widgets{background-color:#1d2b35}#footer-widgets,#footer-widgets p,#footer-widgets li a:before,#footer-widgets .contact-info-widget span.oceanwp-contact-title,#footer-widgets .recent-posts-date,#footer-widgets .recent-posts-comments,#footer-widgets .widget-recent-posts-icons li .fa{color:#ffffff}#footer-widgets li,#footer-widgets #wp-calendar caption,#footer-widgets #wp-calendar th,#footer-widgets #wp-calendar tbody,#footer-widgets .contact-info-widget i,#footer-widgets .oceanwp-newsletter-form-wrap input[type="email"],#footer-widgets .posts-thumbnails-widget li,#footer-widgets .social-widget li a{border-color:#000000}#footer-widgets .contact-info-widget .owp-icon{border-color:#000000}/* Footer Bottom CSS */#footer-bottom{background-color:#1baaba}#footer-bottom a:hover,#footer-bottom #footer-bottom-menu a:hover{color:#f2e126}/* Typography CSS */body{font-weight:400;font-size:18px;color:#000000}h1{line-height:1.3}h2{font-family:Nobile;font-weight:700;font-size:28px;color:#3a3a3a;line-height:1.2}h3{font-family:Nobile;font-weight:600;font-size:22px;color:#3a3a3a;line-height:1}h4{font-family:Nobile;font-weight:600;font-size:20px;color:#3a3a3a;line-height:1}#top-bar-content,#top-bar-social-alt{font-family:Montserrat}#site-navigation-wrap .dropdown-menu >li >a,#site-header.full_screen-header .fs-dropdown-menu >li >a,#site-header.top-header #site-navigation-wrap .dropdown-menu >li >a,#site-header.center-header #site-navigation-wrap .dropdown-menu >li >a,#site-header.medium-header #site-navigation-wrap .dropdown-menu >li >a,.oceanwp-mobile-menu-icon a{font-family:Work Sans;font-weight:300;font-style:normal;font-size:16px;letter-spacing:.4px;text-transform:capitalize}.dropdown-menu ul li a.menu-link,#site-header.full_screen-header .fs-dropdown-menu ul.sub-menu li a{font-family:Work Sans}.sidr-class-dropdown-menu li a,a.sidr-class-toggle-sidr-close,#mobile-dropdown ul li a,body #mobile-fullscreen ul li a{font-family:Work Sans;font-weight:600}.page-header .page-header-title,.page-header.background-image-page-header .page-header-title{font-family:Montserrat}.site-breadcrumbs{font-family:Work Sans}.blog-entry.post .blog-entry-header .entry-title a{font-family:Nobile;font-weight:600}.single-post .entry-title{font-family:Nobile;font-weight:700;font-size:32px;color:#3a3a3a;line-height:1.2}.sidebar-box,.footer-box{font-family:Montserrat;font-weight:400;font-size:13px;color:#ffffff}@media (max-width:480px){.sidebar-box,.footer-box{font-size:18px}}#footer-widgets .footer-box .widget-title{font-family:Work Sans;font-size:14px}#footer-bottom #copyright{font-family:Work Sans;font-size:13px;letter-spacing:1px}#footer-bottom #footer-bottom-menu{font-family:Work Sans;letter-spacing:1px}
+</style><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<!-- Google tag (gtag.js) -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-MPN88FQPNH"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MPN88FQPNH');
+</script>
+	<script type="rocketlazyloadscript" async data-rocket-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1022049280767115"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-rsssl=1 class="post-template-default single single-post postid-13251 single-format-standard wp-custom-logo wp-embed-responsive oceanwp-theme dropdown-mobile no-header-border default-breakpoint has-sidebar content-right-sidebar post-in-category-travel-quotes has-topbar page-header-disabled has-breadcrumbs has-blog-grid"  >
+
+	
+	
+	<div id="outer-wrap" class="site clr">
+
+		<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+		
+		<div id="wrap" class="clr">
+
+			
+
+<div id="top-bar-wrap" class="clr hide-tablet-mobile">
+
+	<div id="top-bar" class="clr container has-no-content">
+
+		
+		<div id="top-bar-inner" class="clr">
+
+			
+	<div id="top-bar-content" class="clr top-bar-right">
+
+		
+<div id="top-bar-nav" class="navigation clr">
+
+	<ul id="menu-top-bar-menu" class="top-bar-menu dropdown-menu sf-menu"><li id="menu-item-15522" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15522"><a href="https://republicquote.com/about-us/" class="menu-link">About Us</a></li><li id="menu-item-15521" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15521"><a href="https://republicquote.com/contact-us/" class="menu-link">Contact Us</a></li><li id="menu-item-15520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="https://republicquote.com/write-for-us/" class="menu-link">Write For Us</a></li><li id="menu-item-15527" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15527"><a href="https://republicquote.com/dmca-copyright/" class="menu-link">DMCA Copyright</a></li><li id="menu-item-15814" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-15814"><a href="https://republicquote.com/privacy-policy/" class="menu-link">Privacy Policy</a></li></ul>
+</div>
+
+		
+			
+	</div><!-- #top-bar-content -->
+
+
+		</div><!-- #top-bar-inner -->
+
+		
+	</div><!-- #top-bar -->
+
+</div><!-- #top-bar-wrap -->
+
+
+			
+<header id="site-header" class="minimal-header clr" data-height="70"   role="banner">
+
+	
+					
+			<div id="site-header-inner" class="clr container">
+
+				
+				
+
+<div id="site-logo" class="clr"   >
+
+	
+	<div id="site-logo-inner" class="clr">
+
+		<a href="https://republicquote.com/" class="custom-logo-link" rel="home"><img width="200" height="76" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%2076'%3E%3C/svg%3E" class="custom-logo" alt="Republic Quote Logo" decoding="async" data-lazy-src="https://republicquote.com/wp-content/uploads/2022/04/Republic-Quote-Logo.png.webp" /><noscript><img width="200" height="76" src="https://republicquote.com/wp-content/uploads/2022/04/Republic-Quote-Logo.png.webp" class="custom-logo" alt="Republic Quote Logo" decoding="async" /></noscript></a>
+	</div><!-- #site-logo-inner -->
+
+	
+	
+</div><!-- #site-logo -->
+
+			<div id="site-navigation-wrap" class="clr">
+			
+			
+			
+			<nav id="site-navigation" class="navigation main-navigation clr"   role="navigation" >
+
+				<ul id="menu-main-menu" class="main-menu dropdown-menu sf-menu"><li id="menu-item-11736" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11736"><a href="https://republicquote.com/birthday-quotes/" class="menu-link"><span class="text-wrap">Birthday Quotes</span></a></li><li id="menu-item-12046" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-12046"><a href="https://republicquote.com/famous-people-quotes/" class="menu-link"><span class="text-wrap">Famous People Quotes</span></a></li><li id="menu-item-12342" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-12342"><a href="https://republicquote.com/god-quotes/" class="menu-link"><span class="text-wrap">God Quotes</span></a></li><li id="menu-item-11858" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11858"><a href="https://republicquote.com/love-quotes/" class="menu-link"><span class="text-wrap">Love Quotes</span></a></li><li id="menu-item-11859" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11859"><a href="https://republicquote.com/travel-quotes/" class="menu-link"><span class="text-wrap">Travel Quotes</span></a></li><li id="menu-item-16560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16560"><a href="https://republicquote.com/write-for-us/" class="menu-link"><span class="text-wrap">Write For Us</span></a></li><li class="search-toggle-li" ><a href="https://republicquote.com/#" class="site-search-toggle search-dropdown-toggle"><span class="screen-reader-text">Toggle website search</span><i class=" icon-magnifier" aria-hidden="true" role="img"></i></a></li></ul>
+<div id="searchform-dropdown" class="header-searchform-wrap clr" >
+	
+<form aria-label="Search this website" role="search" method="get" class="searchform" action="https://republicquote.com/">	
+	<input aria-label="Insert search query" type="search" id="ocean-search-form-1" class="field" autocomplete="off" placeholder="Search" name="s">
+		</form>
+</div><!-- #searchform-dropdown -->
+
+			</nav><!-- #site-navigation -->
+
+			
+			
+					</div><!-- #site-navigation-wrap -->
+			
+		
+	
+				
+	
+	<div class="oceanwp-mobile-menu-icon clr mobile-right">
+
+		
+		
+		
+		<a href="https://republicquote.com/#mobile-menu-toggle" class="mobile-menu"  aria-label="Mobile Menu">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+								<span class="oceanwp-text">Menu</span>
+				<span class="oceanwp-close-text">Close</span>
+						</a>
+
+		
+		
+		
+	</div><!-- #oceanwp-mobile-menu-navbar -->
+
+	
+
+			</div><!-- #site-header-inner -->
+
+			
+<div id="mobile-dropdown" class="clr" >
+
+	<nav class="clr"  >
+
+		<ul id="menu-main-menu-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11736"><a href="https://republicquote.com/birthday-quotes/">Birthday Quotes</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-12046"><a href="https://republicquote.com/famous-people-quotes/">Famous People Quotes</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-12342"><a href="https://republicquote.com/god-quotes/">God Quotes</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11858"><a href="https://republicquote.com/love-quotes/">Love Quotes</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11859"><a href="https://republicquote.com/travel-quotes/">Travel Quotes</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16560"><a href="https://republicquote.com/write-for-us/">Write For Us</a></li>
+<li class="search-toggle-li" ><a href="https://republicquote.com/#" class="site-search-toggle search-dropdown-toggle"><span class="screen-reader-text">Toggle website search</span><i class=" icon-magnifier" aria-hidden="true" role="img"></i></a></li></ul><ul id="menu-top-bar-menu-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15522"><a href="https://republicquote.com/about-us/">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15521"><a href="https://republicquote.com/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="https://republicquote.com/write-for-us/">Write For Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15527"><a href="https://republicquote.com/dmca-copyright/">DMCA Copyright</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-15814"><a rel="privacy-policy" href="https://republicquote.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+<div id="mobile-menu-search" class="clr">
+	<form aria-label="Search this website" method="get" action="https://republicquote.com/" class="mobile-searchform">
+		<input aria-label="Insert search query" value="" class="field" id="ocean-mobile-search-2" type="search" name="s" autocomplete="off" placeholder="Search" />
+		<button aria-label="Submit search" type="submit" class="searchform-submit">
+			<i class=" icon-magnifier" aria-hidden="true" role="img"></i>		</button>
+					</form>
+</div><!-- .mobile-menu-search -->
+
+	</nav>
+
+</div>
+
+			
+			
+		
+		
+</header><!-- #site-header -->
+
+
+			
+			<main id="main" class="site-main clr"  role="main">
+
+				
+	
+	<div id="content-wrap" class="container clr">
+
+		
+		<div id="primary" class="content-area clr">
+
+			
+			<div id="content" class="site-content clr">
+
+				
+				
+<article id="post-13251">
+
+	
+
+<header class="entry-header clr">
+	<h1 class="single-post-title entry-title" >55+ Best Pune Quotes and Captions for Instagram 2023</h1><!-- .single-post-title -->
+</header><!-- .entry-header -->
+
+
+<div class="thumbnail">
+
+	<img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="You are currently viewing 55+ Best Pune Quotes and Captions for Instagram 2023" decoding="async"  fetchpriority="high" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Pune-Quotes.webp 1200w, https://republicquote.com/wp-content/uploads/Pune-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Pune-Quotes-768x402.webp 768w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://republicquote.com/wp-content/uploads/Pune-Quotes.webp" /><noscript><img width="1200" height="628" src="https://republicquote.com/wp-content/uploads/Pune-Quotes.webp" class="attachment-full size-full wp-post-image" alt="You are currently viewing 55+ Best Pune Quotes and Captions for Instagram 2023" decoding="async"  fetchpriority="high" srcset="https://republicquote.com/wp-content/uploads/Pune-Quotes.webp 1200w, https://republicquote.com/wp-content/uploads/Pune-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Pune-Quotes-768x402.webp 768w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>
+</div><!-- .thumbnail -->
+
+
+<div class="entry-content clr" >
+	<div id="ez-toc-container" class="ez-toc-v2_0_52 counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+<p class="ez-toc-title">Table of Contents</p>
+<label for="ez-toc-cssicon-toggle-item-64d3f516a81b1"><span class="ez-toc-cssicon"><span style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></label><input type="checkbox"  id="ez-toc-cssicon-toggle-item-64d3f516a81b1" checked aria-label="Toggle" /><nav><ul class='ez-toc-list ez-toc-list-level-1 ' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#Best_Pune_Quotes" title="Best Pune Quotes">Best Pune Quotes</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#Crazy_Pune_Captions_for_Instagram" title="Crazy Pune Captions for Instagram">Crazy Pune Captions for Instagram</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#Pune_Sayings" title="Pune Sayings&nbsp;">Pune Sayings&nbsp;</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-4" href="#Why_Should_You_Visit_Pune" title="Why Should You Visit Pune?">Why Should You Visit Pune?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#Best_Places_To_Visit_In_Pune" title="Best Places To Visit In Pune">Best Places To Visit In Pune</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-6" href="#1_Rajgarh_Fort" title="1. Rajgarh Fort">1. Rajgarh Fort</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-7" href="#2_Dagdusheth_Halwai_Temple" title="2. Dagdusheth Halwai Temple">2. Dagdusheth Halwai Temple</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-8" href="#3_Osho_Ashram" title="3. Osho Ashram">3. Osho Ashram</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#4_Sinhagarh_Fort" title="4. Sinhagarh Fort">4. Sinhagarh Fort</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-10" href="#5_Pune_Okayama_Friendship_Garden" title="5. Pune Okayama Friendship Garden">5. Pune Okayama Friendship Garden</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-11" href="#Conclusion" title="Conclusion">Conclusion</a></li></ul></li></ul></li></ul></nav></div>
+
+<p>Pune &#8211; the wonderful city in Maharashtra, India! As possibly the fastest developing city in India, Pune has something for everybody. Whether you&#8217;re searching for a spot to relax, enjoy the stunning natural beauty of the city, or need to explore the lively social scene, Pune has something for you. With its large number of attractions and exercises, Pune is the ideal objective for a fun and memorable trip. So what are you waiting for? Start planning your trip today, and before that, read some Pune Quotes to know more about the city.</p>
+
+
+
+<h2 class="has-text-align-center wp-block-heading"><span class="ez-toc-section" id="Best_Pune_Quotes"></span><strong>Best Pune Quotes</strong><span class="ez-toc-section-end"></span></h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" alt="Best Pune Quotes" class="wp-image-13309" width="450" height="450" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Best-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Best-Pune-Quotes-150x150.webp 150w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp" /><noscript><img decoding="async" src="https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp" alt="Best Pune Quotes" class="wp-image-13309" width="450" height="450" srcset="https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Best-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Best-Pune-Quotes-150x150.webp 150w" sizes="(max-width: 450px) 100vw, 450px" /></noscript></figure></div>
+
+
+<ul>
+<li>“Welcome to Pune.”</li>
+
+
+
+<li>“Pune is on top of my Bucket list.”</li>
+
+
+
+<li>“Adventure is worthwhile in itself.”</li>
+
+
+
+<li>“Get lost in heaven.”</li>
+
+
+
+<li>“Pune is always a good idea.”</li>
+
+
+
+<li>“Pune is the city of love.”</li>
+
+
+
+<li>“If you want to enjoy the weather, come to Pune.”</li>
+
+
+
+<li>“Pune = My First Love.”</li>
+
+
+
+<li>“In the IT hub of India.”</li>
+
+
+
+<li>“Pune = City where dreams are fulfilled.”</li>
+
+
+
+<li>“While visiting Pune, you find your true self.”</li>
+
+
+
+<li>“If lost, return to Pune.”</li>
+
+
+
+<li>“We love Pune.”</li>
+
+
+
+<li>“The family that travels together stays together.”</li>
+
+
+
+<li>“Pune, my peaceful place.”</li>
+
+
+
+<li>“I love the soul of Pune.”</li>
+
+
+
+<li>“Pune is a Drug. It&#8217;s always on High.”</li>
+
+
+
+<li>“Time is more precious than life here.”</li>
+
+
+
+<li>“If anyone wants to see heaven, just visit Pune City.”</li>
+
+
+
+<li>“Pune is top of my bucket list.”</li>
+
+
+
+<li>“Making memories in Pune.”</li>
+
+
+
+<li>“I found my paradise in Pune.”</li>
+
+
+
+<li>“Welcome to the most livable city, Pune.”</li>
+
+
+
+<li>“Everyone Loves Pune.”</li>
+
+
+
+<li>“Pune is the city of entrepreneurs.”</li>
+
+
+
+<li>“When I thought about traveling, my backpack automatically packed for Pune.”</li>
+
+
+
+<li>“Travel was my best friend when I met them; I forgot all my worries!”</li>
+
+
+
+<li>“Pune is so romantic!”</li>
+
+
+
+<li>“A beautiful place for a beautiful soul.”</li>
+
+
+
+<li>“Pune. The place where nature enjoys its beauty.”</li>
+
+
+
+<li>“Pune is the city where people dream with open eyes.”</li>
+</ul>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-5 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full"><img decoding="async" width="600" height="600" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20600'%3E%3C/svg%3E" alt="Pune City Quotes" class="wp-image-13310" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Pune-City-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-City-Quotes-150x150.webp 150w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp" /><noscript><img decoding="async" width="600" height="600" src="https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp" alt="Pune City Quotes" class="wp-image-13310" srcset="https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Pune-City-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-City-Quotes-150x150.webp 150w" sizes="(max-width: 600px) 100vw, 600px" /></noscript></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full"><img decoding="async" width="600" height="600" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20600'%3E%3C/svg%3E" alt="Pune Quotes in English" class="wp-image-13311" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp 600w, https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City-150x150.webp 150w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp" /><noscript><img decoding="async" width="600" height="600" src="https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp" alt="Pune Quotes in English" class="wp-image-13311" srcset="https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp 600w, https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City-150x150.webp 150w" sizes="(max-width: 600px) 100vw, 600px" /></noscript></figure>
+</div>
+</div>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><a href="https://republicquote.com/varanasi-quotes/">Best Varanasi Quotes</a></td><td><a href="https://republicquote.com/chandigarh-quotes/">Chandigarh Captions for Instagram</a></td></tr><tr><td><a href="https://republicquote.com/hyderabad-quotes/">Quotes on Hyderabad</a></td><td><a href="https://republicquote.com/jaisalmer-quotes/">Jaisalmer Quotes</a></td></tr></tbody></table></figure>
+
+
+
+<h2 class="has-text-align-center wp-block-heading"><span class="ez-toc-section" id="Crazy_Pune_Captions_for_Instagram"></span>Crazy Pune Captions for Instagram<span class="ez-toc-section-end"></span></h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" alt="Pune Captions For Instagram" class="wp-image-13317" width="450" height="450" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram-150x150.webp 150w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp" /><noscript><img decoding="async" src="https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp" alt="Pune Captions For Instagram" class="wp-image-13317" width="450" height="450" srcset="https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram-150x150.webp 150w" sizes="(max-width: 450px) 100vw, 450px" /></noscript></figure></div>
+
+
+<ul>
+<li>“Pune is calling my name!”</li>
+
+
+
+<li>“I&#8217;ve got a crush on Pune”</li>
+
+
+
+<li>“Got Pune on my mind”</li>
+
+
+
+<li>“Feeling fine in Pune”</li>
+
+
+
+<li>“Some moments are gold.”</li>
+
+
+
+<li>“Walking through a concrete jungle.”</li>
+
+
+
+<li>“Pune = My kind of city.”</li>
+
+
+
+<li>“Happiness is the first track on fresh Pune views in the morning.”</li>
+
+
+
+<li>“In Pune, nothing is expected, and everything is perfect.”</li>
+
+
+
+<li>“Travel is medicine for me.”</li>
+
+
+
+<li>“There is so much to discover in Pune!”</li>
+
+
+
+<li>“I love You, Pune.”</li>
+
+
+
+<li>“Pune is always a good idea.”</li>
+
+
+
+<li>“Pune is not a city – it&#8217;s a world.”</li>
+
+
+
+<li>“I&#8217;ve got a crush on Pune.”</li>
+
+
+
+<li>“Feeling fine in Pune.”</li>
+
+
+
+<li>“Once upon a time in Pune.”</li>
+
+
+
+<li>“I followed my heart, and it took me all the way to Pune.”</li>
+
+
+
+<li>“Dear Pune, I will never get over you.”</li>
+
+
+
+<li>“Our lives changed when we visited Pune!”</li>
+
+
+
+<li>“Life is short, so live it well.”</li>
+
+
+
+<li>“I never expected a place this beautiful to be real.”</li>
+
+
+
+<li>“Pune is not just a vacation destination; it&#8217;s a way of life.”</li>
+
+
+
+<li>“Pune, please!”</li>
+
+
+
+<li>“Life is short, and the world is wide.”</li>
+
+
+
+<li>“Pune is a dream.”</li>
+</ul>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-8 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full"><img decoding="async" width="600" height="600" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20600'%3E%3C/svg%3E" alt="Leaving Pune Quotes" class="wp-image-13313" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes-150x150.webp 150w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp" /><noscript><img decoding="async" width="600" height="600" src="https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp" alt="Leaving Pune Quotes" class="wp-image-13313" srcset="https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes-150x150.webp 150w" sizes="(max-width: 600px) 100vw, 600px" /></noscript></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full"><img decoding="async" width="600" height="600" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20600'%3E%3C/svg%3E" alt="" class="wp-image-13314" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes-150x150.webp 150w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp" /><noscript><img decoding="async" width="600" height="600" src="https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp" alt="" class="wp-image-13314" srcset="https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp 600w, https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes-150x150.webp 150w" sizes="(max-width: 600px) 100vw, 600px" /></noscript></figure>
+</div>
+</div>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><a href="https://republicquote.com/mussoorie-quotes/">Mussoorie Quotes</a></td><td><a href="https://republicquote.com/leh-ladakh-quotes/">Best Leh Ladakh Quotes</a></td><td><a href="https://republicquote.com/nagaland-quotes/">Nagaland Captions for Instagram</a></td></tr></tbody></table></figure>
+
+
+
+<h2 class="has-text-align-center wp-block-heading"><span class="ez-toc-section" id="Pune_Sayings"></span><strong>Pune Sayings&nbsp;</strong><span class="ez-toc-section-end"></span></h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" alt="" class="wp-image-13318" width="450" height="450" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Pune-Sayings.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Sayings-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Sayings-150x150.webp 150w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://republicquote.com/wp-content/uploads/Pune-Sayings.webp" /><noscript><img decoding="async" src="https://republicquote.com/wp-content/uploads/Pune-Sayings.webp" alt="" class="wp-image-13318" width="450" height="450" srcset="https://republicquote.com/wp-content/uploads/Pune-Sayings.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Sayings-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Sayings-150x150.webp 150w" sizes="(max-width: 450px) 100vw, 450px" /></noscript></figure></div>
+
+
+<ul>
+<li>“Pune is where I&#8217;d like to retire when I&#8217;m old.”</li>
+
+
+
+<li>“Pune is so beautiful; it&#8217;s a wonder we can even take photos to show it off.”</li>
+
+
+
+<li>“There is no doubt that this is paradise.”</li>
+
+
+
+<li>“Once you have lived in Pune, no other city is good enough.”</li>
+
+
+
+<li>“Money can&#8217;t buy you happiness, Visit Pune.”</li>
+
+
+
+<li>“Dreams do come true…in Pune!”</li>
+
+
+
+<li>“Pune is my favorite place to explore in India.”</li>
+
+
+
+<li>“Pune is a gift to mother nature by God.”</li>
+
+
+
+<li>“Work, Travel, Save, Repeat.”</li>
+
+
+
+<li>“Pune is all about fun.”</li>
+
+
+
+<li>“I love Pune.”</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" alt="" class="wp-image-13315" width="450" height="450" data-lazy-srcset="https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English-150x150.webp 150w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp" /><noscript><img decoding="async" src="https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp" alt="" class="wp-image-13315" width="450" height="450" srcset="https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp 600w, https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English-300x300.webp 300w, https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English-150x150.webp 150w" sizes="(max-width: 450px) 100vw, 450px" /></noscript></figure></div>
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><a href="https://republicquote.com/dehradun-quotes/">Dehradun Quotes</a></td><td><a href="https://republicquote.com/travel-quotes/">Travel Captions for Instagram</a></td></tr><tr><td><a href="https://republicquote.com/karnataka-quotes/">Karnataka Captions</a></td><td><a href="https://republicquote.com/mexico-quotes/">Mexico Quotes &amp; Captions</a></td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><span class="ez-toc-section" id="Why_Should_You_Visit_Pune"></span>Why Should You Visit Pune?<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Pune is a city of greenery and culture. There are many good colleges in Pune. It also has a unique village culture, which you will miss if you visit other cities in India. If you want to get an insight into modern India, Pune must be on your list.</p>
+
+
+
+<h2 class="wp-block-heading"><span class="ez-toc-section" id="Best_Places_To_Visit_In_Pune"></span><strong>Best Places To Visit In Pune</strong><span class="ez-toc-section-end"></span></h2>
+
+
+
+<h3 class="wp-block-heading"><span class="ez-toc-section" id="1_Rajgarh_Fort"></span><strong>1. Rajgarh Fort</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>History is one of the best ways to understand what makes us human. Our ancestors&#8217; history has profoundly influenced the culture, traditions, and heritage we follow today. One such place where you can witness some lessons of past life is Rajgarh Fort in Pune.</p>
+
+
+
+<h3 class="wp-block-heading"><span class="ez-toc-section" id="2_Dagdusheth_Halwai_Temple"></span><strong>2. Dagdusheth Halwai Temple</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>The Dagdusheth Halwai Temple is located in Pune&#8217;s quiet and serene part. It offers you a chance to pray, meditate, relax and rejuvenate. The tranquil surroundings of this quiet temple provide ideal tranquility for a pleasant afternoon or evening.</p>
+
+
+
+<h3 class="wp-block-heading"><span class="ez-toc-section" id="3_Osho_Ashram"></span><strong>3. Osho Ashram</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Osho Ashram in Pune is one of the renowned ashrams in <a href="https://en.wikipedia.org/wiki/Maharashtra">Maharashtra</a>. It has a delightful nursery, tranquil environmental factors, and a very much kept-up framework. The ashram gives offices like well-being camps, yoga classes, and meditation meetings.</p>
+
+
+
+<h3 class="wp-block-heading"><span class="ez-toc-section" id="4_Sinhagarh_Fort"></span><strong>4. Sinhagarh Fort</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Sinhagarh Fort is one of the most popular destinations in the city. This fort is a great place to visit if you&#8217;re looking for a picturesque setting, an interesting history, and exciting activities.<br><br>Not only is the fort amazing from a historical perspective, but plenty of activities are available for visitors. From exploring the fort to enjoying a picnic in the gardens, there&#8217;s something for everyone to enjoy.</p>
+
+
+
+<h3 class="wp-block-heading"><span class="ez-toc-section" id="5_Pune_Okayama_Friendship_Garden"></span><strong>5. Pune Okayama Friendship Garden</strong><span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>The Pune Okayama Friendship Garden is a beautiful example of the power of friendship. Started by students from Pune and Okayama, the garden is a symbol of friendship, peace, and cooperation. Located in Pune, the garden is a beautiful addition to the city and a wonderful spot for relaxation.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><span class="ez-toc-section" id="Conclusion"></span><strong>Conclusion</strong><span class="ez-toc-section-end"></span></h4>
+
+
+
+<p>Pune is a beautiful city with a rich cultural heritage. It&#8217;s also home to some of the best universities in the country, making it an ideal place to learn and explore different cultures. And, of course, there&#8217;s always something exciting happening in Pune &#8211; from festivals and concerts to shopping and dining. So if you&#8217;re looking for a stimulating and enjoyable city experience, be sure to visit Pune! Enjoy the beauty of Pune with these beautiful Pune Quotes. You can use these Pune Quotes while sharing images on Instagram. </p>
+
+</div><!-- .entry -->
+
+<div class="post-tags clr">
+	<span class="owp-tag-text">Tags: </span><a href="https://republicquote.com/tag/pune-captions/" rel="tag">pune captions</a><span class="owp-sep">,</span> <a href="https://republicquote.com/tag/pune-captions-for-instagram/" rel="tag">pune captions for instagram</a><span class="owp-sep">,</span> <a href="https://republicquote.com/tag/pune-quotes/" rel="tag">pune quotes</a><span class="owp-sep">,</span> <a href="https://republicquote.com/tag/pune-sayings/" rel="tag">pune sayings</a><span class="owp-sep">,</span> <a href="https://republicquote.com/tag/travel-quotes/" rel="tag">travel quotes</a></div>
+
+
+<section id="author-bio" class="clr">
+
+	<div id="author-bio-inner">
+
+		<div class="author-bio-avatar">
+
+			<a href="https://republicquote.com/author/karunanidhisharma/" title="Visit author page" rel="author" >
+				<img alt='Post author avatar' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3C/svg%3E" data-lazy-srcset='https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' decoding='async' data-lazy-src="https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=100&#038;d=mm&#038;r=g"/><noscript><img alt='Post author avatar' src='https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' decoding='async'/></noscript>			</a>
+
+		</div><!-- .author-bio-avatar -->
+
+		<div class="author-bio-content clr">
+
+			<h3 class="author-bio-title">
+				<a href="https://republicquote.com/author/karunanidhisharma/" title="Visit author page">
+					Karuna Nidhi				</a>
+			</h3><!-- .author-bio-title -->
+
+			
+				<div class="author-bio-description clr">
+					Karuna Nidhi Sharma is a passionate digital marketer. He loves to content for the audience and share his knowledge with others. He completed his graduation from Kota, Rajasthan, with a degree in bachelor of commerce. In his free time, he loves to play sports and travel with family.				</div><!-- author-bio-description -->
+
+			
+		</div>
+
+	</div><!-- #author-bio-inner -->
+
+</section><!-- #author-bio -->
+
+
+	<section id="related-posts" class="clr">
+
+		<h3 class="theme-heading related-posts-title">
+			<span class="text">You Might Also Like</span>
+		</h3>
+
+		<div class="oceanwp-row clr">
+
+			
+			
+				
+				<article class="related-post clr col span_1_of_3 col-1 post-12697 post type-post status-publish format-standard has-post-thumbnail hentry category-travel-quotes tag-best-quotes tag-captions tag-quote tag-san-francisco tag-travel-quotes entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://republicquote.com/san-francisco-quotes/" class="related-thumb">
+
+								<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 60+ Best San Francisco Quotes and Captions for Instagram 2023" decoding="async"  data-lazy-srcset="https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes.webp 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-300x157.webp" /><noscript><img width="300" height="157" src="https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-300x157.webp" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 60+ Best San Francisco Quotes and Captions for Instagram 2023" decoding="async"  srcset="https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/San-Francisco-Quotes.webp 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://republicquote.com/san-francisco-quotes/" rel="bookmark">60+ Best San Francisco Quotes and Captions for Instagram 2023</a>
+					</h3><!-- .related-post-title -->
+
+								
+						<time class="published" datetime="2023-03-01T17:44:34+05:30"><i class=" icon-clock" aria-hidden="true" role="img"></i>01/03/2023</time>
+						
+
+				</article><!-- .related-post -->
+
+				
+			
+				
+				<article class="related-post clr col span_1_of_3 col-2 post-11436 post type-post status-publish format-standard has-post-thumbnail hentry category-travel-quotes tag-captions tag-kerala tag-munnar-quotes tag-quotes tag-travel-quotes entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://republicquote.com/munnar-quotes/" class="related-thumb">
+
+								<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 99+ Amazing Munnar Quotes and Captions For Instagram" decoding="async"  data-lazy-srcset="https://republicquote.com/wp-content/uploads/Munnar-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Munnar-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Munnar-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/Munnar-Quotes.webp 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://republicquote.com/wp-content/uploads/Munnar-Quotes-300x157.webp" /><noscript><img width="300" height="157" src="https://republicquote.com/wp-content/uploads/Munnar-Quotes-300x157.webp" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 99+ Amazing Munnar Quotes and Captions For Instagram" decoding="async"  srcset="https://republicquote.com/wp-content/uploads/Munnar-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Munnar-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Munnar-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/Munnar-Quotes.webp 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://republicquote.com/munnar-quotes/" rel="bookmark">99+ Amazing Munnar Quotes and Captions For Instagram</a>
+					</h3><!-- .related-post-title -->
+
+								
+						<time class="published" datetime="2023-03-01T00:38:39+05:30"><i class=" icon-clock" aria-hidden="true" role="img"></i>01/03/2023</time>
+						
+
+				</article><!-- .related-post -->
+
+				
+			
+				
+				<article class="related-post clr col span_1_of_3 col-3 post-12613 post type-post status-publish format-standard has-post-thumbnail hentry category-travel-quotes tag-best-quotes tag-florida tag-quote tag-sunshine-state tag-travel-quotes entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://republicquote.com/florida-quotes/" class="related-thumb">
+
+								<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 80+ Best Florida Quotes and Sayings | Sunshine State Captions" decoding="async"  data-lazy-srcset="https://republicquote.com/wp-content/uploads/Florida-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Florida-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Florida-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/Florida-Quotes.webp 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://republicquote.com/wp-content/uploads/Florida-Quotes-300x157.webp" /><noscript><img width="300" height="157" src="https://republicquote.com/wp-content/uploads/Florida-Quotes-300x157.webp" class="attachment-medium size-medium wp-post-image" alt="Read more about the article 80+ Best Florida Quotes and Sayings | Sunshine State Captions" decoding="async"  srcset="https://republicquote.com/wp-content/uploads/Florida-Quotes-300x157.webp 300w, https://republicquote.com/wp-content/uploads/Florida-Quotes-1024x536.webp 1024w, https://republicquote.com/wp-content/uploads/Florida-Quotes-768x402.webp 768w, https://republicquote.com/wp-content/uploads/Florida-Quotes.webp 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://republicquote.com/florida-quotes/" rel="bookmark">80+ Best Florida Quotes and Sayings | Sunshine State Captions</a>
+					</h3><!-- .related-post-title -->
+
+								
+						<time class="published" datetime="2023-03-01T22:55:33+05:30"><i class=" icon-clock" aria-hidden="true" role="img"></i>01/03/2023</time>
+						
+
+				</article><!-- .related-post -->
+
+				
+			
+		</div><!-- .oceanwp-row -->
+
+	</section><!-- .related-posts -->
+
+
+
+
+
+
+	<nav class="navigation post-navigation" aria-label="Read more articles">
+		<h2 class="screen-reader-text">Read more articles</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://republicquote.com/nagaland-quotes/" rel="prev"><span class="title"><i class=" fas fa-long-arrow-alt-left" aria-hidden="true" role="img"></i> Previous Post</span><span class="post-title">99+ Unique Nagaland Quotes and Captions for Instagram 2023</span></a></div><div class="nav-next"><a href="https://republicquote.com/best-goa-quotes/" rel="next"><span class="title"><i class=" fas fa-long-arrow-alt-right" aria-hidden="true" role="img"></i> Next Post</span><span class="post-title">Best Goa Quotes: Discover the Beauty of the Coastal Paradise</span></a></div></div>
+	</nav>
+
+</article>
+
+				
+			</div><!-- #content -->
+
+			
+		</div><!-- #primary -->
+
+		
+
+<aside id="right-sidebar" class="sidebar-container widget-area sidebar-primary"   role="complementary" aria-label="Primary Sidebar">
+
+	
+	<div id="right-sidebar-inner" class="clr">
+
+		<div id="block-19" class="sidebar-box widget_block widget_search clr"><form role="search" method="get" action="https://republicquote.com/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"><label class="wp-block-search__label" for="wp-block-search__input-15" >Search</label><div class="wp-block-search__inside-wrapper " ><input class="wp-block-search__input" id="wp-block-search__input-15" placeholder="Search" value="" type="search" name="s" required /><button aria-label="Search" class="wp-block-search__button wp-element-button" type="submit" >Search</button></div></form></div>
+		<div id="recent-posts-2" class="sidebar-box widget_recent_entries clr">
+		<p class="widget-title">Recent Posts</p>
+		<ul>
+											<li>
+					<a href="https://republicquote.com/chennai-quotes/">50+ Top Chennai Quotes &#038; Captions for Instagram 2023</a>
+									</li>
+											<li>
+					<a href="https://republicquote.com/apj-abdul-kalam-quotes/">Best APJ Abdul Kalam Quotes | Inspirational Quotes</a>
+									</li>
+											<li>
+					<a href="https://republicquote.com/gulzar-quotes/">100+ Best Gulzar Quotes on Love, Life and Motivation</a>
+									</li>
+											<li>
+					<a href="https://republicquote.com/sun-kissed-quotes/">50+ Best Sun Kissed Quotes for your next Instagram Post</a>
+									</li>
+											<li>
+					<a href="https://republicquote.com/milkshake-captions/">Milkshake Captions: Add a Sweet Touch to Your Instagram Posts</a>
+									</li>
+					</ul>
+
+		</div><div id="categories-2" class="sidebar-box widget_categories clr"><p class="widget-title">Categories</p>
+			<ul>
+					<li class="cat-item cat-item-797"><a href="https://republicquote.com/category/birthday-quotes/">Birthday Quotes</a> <span class="cat-count-span">(6)</span>
+</li>
+	<li class="cat-item cat-item-31"><a href="https://republicquote.com/category/blogs/">Blogs</a> <span class="cat-count-span">(13)</span>
+</li>
+	<li class="cat-item cat-item-43"><a href="https://republicquote.com/category/celebration-quotes/">Celebration Quotes</a> <span class="cat-count-span">(7)</span>
+</li>
+	<li class="cat-item cat-item-742"><a href="https://republicquote.com/category/educational-quotes/">Educational Quotes</a> <span class="cat-count-span">(7)</span>
+</li>
+	<li class="cat-item cat-item-367"><a href="https://republicquote.com/category/famous-people-quotes/">Famous People Quotes</a> <span class="cat-count-span">(29)</span>
+</li>
+	<li class="cat-item cat-item-368"><a href="https://republicquote.com/category/festival-quotes/">Festival Quotes</a> <span class="cat-count-span">(6)</span>
+</li>
+	<li class="cat-item cat-item-372"><a href="https://republicquote.com/category/friends-quotes/">Friends Quotes</a> <span class="cat-count-span">(7)</span>
+</li>
+	<li class="cat-item cat-item-371"><a href="https://republicquote.com/category/god-quotes/">God Quotes</a> <span class="cat-count-span">(8)</span>
+</li>
+	<li class="cat-item cat-item-875"><a href="https://republicquote.com/category/hindi-quotes/">Hindi Quotes</a> <span class="cat-count-span">(22)</span>
+</li>
+	<li class="cat-item cat-item-370"><a href="https://republicquote.com/category/love-quotes/">Love Quotes</a> <span class="cat-count-span">(19)</span>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://republicquote.com/category/motivational-quotes/">Motivational Quotes</a> <span class="cat-count-span">(11)</span>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://republicquote.com/category/quotes/">Quotes</a> <span class="cat-count-span">(86)</span>
+</li>
+	<li class="cat-item cat-item-508"><a href="https://republicquote.com/category/travel-quotes/">Travel Quotes</a> <span class="cat-count-span">(67)</span>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://republicquote.com/category/yoga-quotes/">Yoga Quotes</a> <span class="cat-count-span">(1)</span>
+</li>
+			</ul>
+
+			</div><div id="archives-2" class="sidebar-box widget_archive clr"><p class="widget-title">Archives</p>
+			<ul>
+					<li><a href='https://republicquote.com/2023/03/'>March 2023</a></li>
+	<li><a href='https://republicquote.com/2023/02/'>February 2023</a></li>
+	<li><a href='https://republicquote.com/2023/01/'>January 2023</a></li>
+			</ul>
+
+			</div><div id="nav_menu-3" class="sidebar-box widget_nav_menu clr"><p class="widget-title">Pages</p><div class="menu-top-bar-menu-container"><ul id="menu-top-bar-menu-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15522"><a href="https://republicquote.com/about-us/">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15521"><a href="https://republicquote.com/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="https://republicquote.com/write-for-us/">Write For Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15527"><a href="https://republicquote.com/dmca-copyright/">DMCA Copyright</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-15814"><a rel="privacy-policy" href="https://republicquote.com/privacy-policy/">Privacy Policy</a></li>
+</ul></div></div>
+	</div><!-- #sidebar-inner -->
+
+	
+</aside><!-- #right-sidebar -->
+
+
+	</div><!-- #content-wrap -->
+
+	
+
+	</main><!-- #main -->
+
+	
+	
+	
+		
+<footer id="footer" class="site-footer"   role="contentinfo">
+
+	
+	<div id="footer-inner" class="clr">
+
+		
+
+<div id="footer-widgets" class="oceanwp-row clr">
+
+	
+	<div class="footer-widgets-inner container">
+
+					<div class="footer-box span_1_of_4 col col-1">
+				<div id="text-10" class="footer-widget widget_text clr"><p class="widget-title">Travel Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/kedarnath-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Kedarnath Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Kedarnath Quotes</span></a></li>
+<li><a href="https://republicquote.com/mumbai-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Mumbai Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Mumbai Quotes</span></a></li>
+<li><a href="https://republicquote.com/goa-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Goa Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Goa Quotes</span></a></li>
+<li><a href="https://republicquote.com/best-udaipur-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Udaipur Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Udaipur Quotes</span></a></li>
+<li><a href="https://republicquote.com/best-jaipur-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Jaipur Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Jaipur Quotes</span></a></li>
+<li><a href="https://republicquote.com/uttarakhand-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Uttarakhand Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Uttarakhand Quotes</span></a></li>
+<li><a href="https://republicquote.com/bangalore-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Bangalore Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Bangalore Quotes</span></a></li>
+<li><a href="https://republicquote.com/manali-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Manali Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Manali Quotes</span></a></li>
+<li><a href="https://republicquote.com/rishikesh-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Rishikesh Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Rishikesh Quotes</span></a></li>
+<li><a href="https://republicquote.com/delhi-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Delhi Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Delhi Quotes</span></a></li>
+<li><a href="https://republicquote.com/taj-mahal-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Taj Mahal Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:899,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:3,&quot;3&quot;:6},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Taj Mahal Quotes</span></a></li>
+<li><a href="https://republicquote.com/leh-ladakh-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Leh Ladakh Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:899,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:3,&quot;3&quot;:6},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Leh Ladakh Quotes</span></a></li>
+<li><a href="https://republicquote.com/kashmir-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Kashmir Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:899,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:3,&quot;3&quot;:6},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Kashmir Quotes</span></a></li>
+<li><a href="https://republicquote.com/italy-quotes/">Italy Quotes</a></li>
+<li><a href="https://republicquote.com/paris-quotes/">Paris Quotes</a></li>
+<li><a href="https://republicquote.com/new-york-quotes/">New York Quotes</a></li>
+<li><a href="https://republicquote.com/london-quotes/">London Quotes</a></li>
+<li><a href="https://republicquote.com/dubai-quotes/">Dubai Quotes</a></li>
+<li><a href="https://republicquote.com/chicago-quotes/">Chicago Quotes</a></li>
+<li><a href="https://republicquote.com/california-quotes/">California Quotes</a></li>
+<li><a href="https://republicquote.com/miami-quotes/">Miami Quotes</a></li>
+<li><a href="https://republicquote.com/maldives-quotes/">Maldives Quotes</a></li>
+<li><a href="https://republicquote.com/las-vegas-quotes/">Las Vegas Quotes</a></li>
+</ul>
+</div>
+		</div>			</div><!-- .footer-one-box -->
+
+							<div class="footer-box span_1_of_4 col col-2">
+					<div id="text-2" class="footer-widget widget_text clr"><p class="widget-title">Famous People Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/sidhu-moose-wala-quotes/">Sidhu Moose Wala Quotes</a></li>
+<li><a href="https://republicquote.com/gaur-gopal-das-quotes/">Gaur Gopal Das Quotes</a></li>
+<li><a href="https://republicquote.com/vivek-bindra-quotes/">Vivek Bindra Quotes</a></li>
+<li><a href="https://republicquote.com/sandeep-maheshwari-quotes/">Sandeep Maheshwari Quotes</a></li>
+<li><a href="https://republicquote.com/rani-lakshmi-bai-quotes/">Rani Laxmi Bai Quotes</a></li>
+<li><a href="https://republicquote.com/rahul-kaushik-quotes/">Rahul Kaushik Quotes</a></li>
+<li><a href="https://republicquote.com/mangal-pandey-quotes/">Mangal Pandey Quotes</a></li>
+<li><a href="https://republicquote.com/gulzar-quotes/">Gulzar Quotes</a></li>
+<li><a href="https://republicquote.com/virat-kohli-quotes/">Virat Kohli Quotes</a></li>
+<li><a href="https://republicquote.com/sachin-tendulkar-quotes/">Sachin Tendulkar Quotes</a></li>
+</ul>
+</div>
+		</div><div id="text-12" class="footer-widget widget_text clr"><p class="widget-title">Motivational Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/quotes-for-chartered-accountant/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;CA Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">CA Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/motivational-quotes-neet-aspirants/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Neet Aspirants Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Neet Aspirants Quotes</span></a></li>
+<li><a href="https://republicquote.com/motivational-quotes-for-jee-aspirants/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Jee Aspirants Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Jee Aspirants Quotes</span></a></li>
+<li><a href="https://republicquote.com/upsc-motivational-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;UPSC Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">UPSC Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/cat-exam-motivational-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;CAT Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">CAT Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/motivational-quotes-for-employees/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Motivational Quotes for Employees&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Employees Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/motivational-quotes-for-work/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Motivational Quotes for Work&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Work Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/love-motivational-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Love Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Love Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/gym-motivational-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Gym Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Gym Motivational Quotes</span></a></li>
+<li><a href="https://republicquote.com/success-motivational-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Success Motivational Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Success Motivational Quotes</span></a></li>
+</ul>
+</div>
+		</div>				</div><!-- .footer-one-box -->
+				
+							<div class="footer-box span_1_of_4 col col-3 ">
+					<div id="text-11" class="footer-widget widget_text clr"><p class="widget-title">Celebration Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/quotes-for-freshers-party/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Quotes For Freshers Party&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Quotes For Freshers Party</span></a></li>
+<li><a href="https://republicquote.com/bachelor-party-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Bachelor Party Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Bachelor Party Quotes</span></a></li>
+<li><a href="https://republicquote.com/birthday-countdown-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Birthday Countdown Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Birthday Countdown Quotes</span></a></li>
+<li><a href="https://republicquote.com/pre-birthday-celebration-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Pre Birthday Celebration Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Pre Birthday Celebration Quotes</span></a></li>
+<li><a href="https://republicquote.com/birthday-quotes-for-teacher/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Birthday Quotes For Teacher&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Birthday Quotes For Teacher</span></a></li>
+<li><a href="https://republicquote.com/company-anniversary-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Company Anniversary Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Company Anniversary Quotes</span></a></li>
+<li><a href="https://republicquote.com/baby-announcement-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Baby Announcement Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Baby Announcement Quotes</span></a></li>
+<li><a href="https://republicquote.com/friendship-anniversary-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Friendship Anniversary Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Friendship Anniversary Quotes</span></a></li>
+<li><a href="https://republicquote.com/friendaversary-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Friendaversary Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Friendaversary Quotes</span></a></li>
+</ul>
+</div>
+		</div><div id="text-13" class="footer-widget widget_text clr"><p class="widget-title">Love Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/flirting-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Flirting Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Flirting Quotes</span></a></li>
+<li><a href="https://republicquote.com/hug-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Hug Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Hug Quotes</span></a></li>
+<li><a href="https://republicquote.com/holding-hands-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Holding Hands Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:7107,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:0,&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:0},&quot;15&quot;:&quot;Arial&quot;}">Holding Hands Quotes</span></a></li>
+<li><a href="https://republicquote.com/love-quotes-for-him-in-hindi/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Love Quotes For Him In Hindi&quot;}" data-sheets-userformat="{&quot;2&quot;:7107,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:0,&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:0},&quot;15&quot;:&quot;Arial&quot;}">Love Quotes For Him</span></a></li>
+<li><a href="https://republicquote.com/emotional-love-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Emotional Love Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Emotional Love Quotes</span></a></li>
+<li><a href="https://republicquote.com/sad-love-quotes-in-hindi/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sad Love Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Sad Love Quotes</span></a></li>
+<li><a href="https://republicquote.com/one-sided-love-quotes-in-hindi/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;One-Sided Love Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">One-Sided Love Quotes</span></a></li>
+<li><a href="https://republicquote.com/silent-relationship-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Silent Relationship Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Silent Relationship Quotes</span></a></li>
+<li><a href="https://republicquote.com/good-morning-love-quotes-in-hindi/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Good Morning Love Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:7107,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:0,&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:0},&quot;15&quot;:&quot;Arial&quot;}">Good Morning Love Quotes</span></a></li>
+<li><a href="https://republicquote.com/radha-krishna-love-quotes-in-hindi/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Radha Krishna Love Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:897,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:1,&quot;11&quot;:3,&quot;12&quot;:0}">Radha Krishna Love Quotes</span></a></li>
+</ul>
+</div>
+		</div>				</div><!-- .footer-one-box -->
+				
+							<div class="footer-box span_1_of_4 col col-4">
+					<div id="text-15" class="footer-widget widget_text clr"><p class="widget-title">Friends Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/friendship-day-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Friendship Day Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Friendship Day Quotes</span></a></li>
+<li><a href="https://republicquote.com/quotes-for-busy-friends/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Quotes for Busy Friends&quot;}" data-sheets-userformat="{&quot;2&quot;:513,&quot;3&quot;:{&quot;1&quot;:0},&quot;12&quot;:0}">Quotes for Busy Friends</span></a></li>
+<li><a href="https://republicquote.com/sorry-quotes-for-friends/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sorry Quotes for Friends&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Sorry Quotes for Friends</span></a></li>
+<li><a href="https://republicquote.com/drinking-with-friends-quotes/">Drinking with Friends Quotes</a></li>
+<li><a href="https://republicquote.com/hangout-quotes-with-friends/">Hangout Quotes with Friends</a></li>
+<li><a href="https://republicquote.com/broken-friendship-quotes/">Broken Friendship Quotes</a></li>
+<li><a href="https://republicquote.com/unexpected-friendship-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Unexpected Friendship Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Unexpected Friendship Quotes</span></a></li>
+</ul>
+</div>
+		</div><div id="text-14" class="footer-widget widget_text clr"><p class="widget-title">Quotes</p>			<div class="textwidget"><ul>
+<li><a href="https://republicquote.com/saree-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Saree Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Saree Quotes</span></a></li>
+<li><a href="https://republicquote.com/mehndi-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Mehndi Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Mehndi Quotes</span></a></li>
+<li><a href="https://republicquote.com/jhumka-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Jhumka Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Jhumka Quotes</span></a></li>
+<li><a href="https://republicquote.com/save-birds-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Save Birds Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Save Birds Quotes</span></a></li>
+<li><a href="https://republicquote.com/save-trees-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Save Trees Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Save Trees Quotes</span></a></li>
+<li><a href="https://republicquote.com/mood-off-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Mood Off Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Mood Off Quotes</span></a></li>
+<li><a href="https://republicquote.com/fresh-air-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Fresh Air Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Fresh Air Quotes</span></a></li>
+<li><a href="https://republicquote.com/wedding-ring-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Wedding Ring Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Wedding Ring Quotes</span></a></li>
+<li><a href="https://republicquote.com/hummingbird-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Hummingbird Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Hummingbird Quotes</span></a></li>
+<li><a href="https://republicquote.com/nothing-is-permanent-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Nothing is Permanent Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">Nothing is Permanent Quotes</span></a></li>
+<li><a href="https://republicquote.com/school-memories-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;School Memories Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">School Memories Quotes</span></a></li>
+<li><a href="https://republicquote.com/college-memories-quotes/"><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;College Memories Quotes&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:3,&quot;12&quot;:0}">College Memories Quotes</span></a></li>
+</ul>
+</div>
+		</div>				</div><!-- .footer-box -->
+				
+			
+	</div><!-- .container -->
+
+	
+</div><!-- #footer-widgets -->
+
+
+
+<div id="footer-bottom" class="clr no-footer-nav">
+
+	
+	<div id="footer-bottom-inner" class="container clr">
+
+		
+		
+			<div id="copyright" class="clr" role="contentinfo">
+				Copyright @2023 - <a href="https://republicquote.com/">RepublicQuote.com</a> | All Rights Reserved | <a href="https://republicquote.com/privacy-policy/">Privacy Policy</a>
+ 			</div><!-- #copyright -->
+
+			
+	</div><!-- #footer-bottom-inner -->
+
+	
+</div><!-- #footer-bottom -->
+
+
+	</div><!-- #footer-inner -->
+
+	
+</footer><!-- #footer -->
+
+	
+	
+</div><!-- #wrap -->
+
+
+</div><!-- #outer-wrap -->
+
+
+
+
+
+
+
+
+<script type="application/ld+json" class="saswp-schema-markup-output">
+[{"@context":"https://schema.org/","@graph":[{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"Birthday Quotes","url":"https://republicquote.com/birthday-quotes/"},{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"Famous People Quotes","url":"https://republicquote.com/famous-people-quotes/"},{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"God Quotes","url":"https://republicquote.com/god-quotes/"},{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"Love Quotes","url":"https://republicquote.com/love-quotes/"},{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"Travel Quotes","url":"https://republicquote.com/travel-quotes/"},{"@context":"https://schema.org/","@type":"SiteNavigationElement","@id":"https://republicquote.com#Main Menu","name":"Write For Us","url":"https://republicquote.com/write-for-us/"}]},
+
+{"@context":"https://schema.org/","@type":"BreadcrumbList","@id":"https://republicquote.com/pune-quotes/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://republicquote.com","name":"RepublicQuote"}},{"@type":"ListItem","position":2,"item":{"@id":"https://republicquote.com/category/travel-quotes/","name":"Travel Quotes"}},{"@type":"ListItem","position":3,"item":{"@id":"https://republicquote.com/pune-quotes/","name":"55+ Best Pune Quotes and Captions For Instagram 2023"}}]},
+
+{"@context":"https://schema.org/","@type":"BlogPosting","@id":"https://republicquote.com/pune-quotes/#BlogPosting","url":"https://republicquote.com/pune-quotes/","inLanguage":"en-US","mainEntityOfPage":"https://republicquote.com/pune-quotes/","headline":"55+ Best Pune Quotes and Captions For Instagram 2023","description":"Pune Quotes and Captions 1. Pune is calling my name! 2. Pune is top of my bucket list. 3. I love Pune. 4. Life is short, and the world is","articleBody":"Pune - the wonderful city in Maharashtra, India! As possibly the fastest developing city in India, Pune has something for everybody. Whether you're searching for a spot to relax, enjoy the stunning natural beauty of the city, or need to explore the lively social scene, Pune has something for you. With its large number of attractions and exercises, Pune is the ideal objective for a fun and memorable trip. So what are you waiting for? Start planning your trip today, and before that, read some Pune Quotes to know more about the city.    Best Pune Quotes         “Welcome to Pune.”    “Pune is on top of my Bucket list.”    “Adventure is worthwhile in itself.”    “Get lost in heaven.”    “Pune is always a good idea.”    “Pune is the city of love.”    “If you want to enjoy the weather, come to Pune.”    “Pune  My First Love.”    “In the IT hub of India.”    “Pune  City where dreams are fulfilled.”    “While visiting Pune, you find your true self.”    “If lost, return to Pune.”    “We love Pune.”    “The family that travels together stays together.”    “Pune, my peaceful place.”    “I love the soul of Pune.”    “Pune is a Drug. It's always on High.”    “Time is more precious than life here.”    “If anyone wants to see heaven, just visit Pune City.”    “Pune is top of my bucket list.”    “Making memories in Pune.”    “I found my paradise in Pune.”    “Welcome to the most livable city, Pune.”    “Everyone Loves Pune.”    “Pune is the city of entrepreneurs.”    “When I thought about traveling, my backpack automatically packed for Pune.”    “Travel was my best friend when I met them; I forgot all my worries!”    “Pune is so romantic!”    “A beautiful place for a beautiful soul.”    “Pune. The place where nature enjoys its beauty.”    “Pune is the city where people dream with open eyes.”                   Best Varanasi QuotesChandigarh Captions for InstagramQuotes on HyderabadJaisalmer Quotes    Crazy Pune Captions for Instagram         “Pune is calling my name!”    “I've got a crush on Pune”    “Got Pune on my mind”    “Feeling fine in Pune”    “Some moments are gold.”    “Walking through a concrete jungle.”    “Pune  My kind of city.”    “Happiness is the first track on fresh Pune views in the morning.”    “In Pune, nothing is expected, and everything is perfect.”    “Travel is medicine for me.”    “There is so much to discover in Pune!”    “I love You, Pune.”    “Pune is always a good idea.”    “Pune is not a city – it's a world.”    “I've got a crush on Pune.”    “Feeling fine in Pune.”    “Once upon a time in Pune.”    “I followed my heart, and it took me all the way to Pune.”    “Dear Pune, I will never get over you.”    “Our lives changed when we visited Pune!”    “Life is short, so live it well.”    “I never expected a place this beautiful to be real.”    “Pune is not just a vacation destination; it's a way of life.”    “Pune, please!”    “Life is short, and the world is wide.”    “Pune is a dream.”                   Mussoorie QuotesBest Leh Ladakh QuotesNagaland Captions for Instagram    Pune Sayings&nbsp;         “Pune is where I'd like to retire when I'm old.”    “Pune is so beautiful; it's a wonder we can even take photos to show it off.”    “There is no doubt that this is paradise.”    “Once you have lived in Pune, no other city is good enough.”    “Money can't buy you happiness, Visit Pune.”    “Dreams do come true…in Pune!”    “Pune is my favorite place to explore in India.”    “Pune is a gift to mother nature by God.”    “Work, Travel, Save, Repeat.”    “Pune is all about fun.”    “I love Pune.”         Dehradun QuotesTravel Captions for InstagramKarnataka CaptionsMexico Quotes &amp; Captions    Why Should You Visit Pune?    Pune is a city of greenery and culture. There are many good colleges in Pune. It also has a unique village culture, which you will miss if you visit other cities in India. If you want to get an insight into modern India, Pune must be on your list.    Best Places To Visit In Pune    1. Rajgarh Fort    History is one of the best ways to understand what makes us human. Our ancestors' history has profoundly influenced the culture, traditions, and heritage we follow today. One such place where you can witness some lessons of past life is Rajgarh Fort in Pune.    2. Dagdusheth Halwai Temple    The Dagdusheth Halwai Temple is located in Pune's quiet and serene part. It offers you a chance to pray, meditate, relax and rejuvenate. The tranquil surroundings of this quiet temple provide ideal tranquility for a pleasant afternoon or evening.    3. Osho Ashram    Osho Ashram in Pune is one of the renowned ashrams in Maharashtra. It has a delightful nursery, tranquil environmental factors, and a very much kept-up framework. The ashram gives offices like well-being camps, yoga classes, and meditation meetings.    4. Sinhagarh Fort    Sinhagarh Fort is one of the most popular destinations in the city. This fort is a great place to visit if you're looking for a picturesque setting, an interesting history, and exciting activities.Not only is the fort amazing from a historical perspective, but plenty of activities are available for visitors. From exploring the fort to enjoying a picnic in the gardens, there's something for everyone to enjoy.    5. Pune Okayama Friendship Garden    The Pune Okayama Friendship Garden is a beautiful example of the power of friendship. Started by students from Pune and Okayama, the garden is a symbol of friendship, peace, and cooperation. Located in Pune, the garden is a beautiful addition to the city and a wonderful spot for relaxation.&nbsp;    Conclusion    Pune is a beautiful city with a rich cultural heritage. It's also home to some of the best universities in the country, making it an ideal place to learn and explore different cultures. And, of course, there's always something exciting happening in Pune - from festivals and concerts to shopping and dining. So if you're looking for a stimulating and enjoyable city experience, be sure to visit Pune! Enjoy the beauty of Pune with these beautiful Pune Quotes. You can use these Pune Quotes while sharing images on Instagram.","keywords":"pune captions, pune captions for instagram, pune quotes, pune sayings, travel quotes, ","datePublished":"2023-02-28T23:49:47+05:30","dateModified":"2023-02-28T23:50:12+05:30","author":{"@type":"Person","name":"Karuna Nidhi","description":"Karuna Nidhi Sharma is a passionate digital marketer. He loves to content for the audience and share his knowledge with others. He completed his graduation from Kota, Rajasthan, with a degree in bachelor of commerce. In his free time, he loves to play sports and travel with family.","url":"https://republicquote.com/author/karunanidhisharma/","sameAs":[],"image":{"@type":"ImageObject","url":"https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=96&d=mm&r=g","height":96,"width":96}},"editor":{"@type":"Person","name":"Karuna Nidhi","description":"Karuna Nidhi Sharma is a passionate digital marketer. He loves to content for the audience and share his knowledge with others. He completed his graduation from Kota, Rajasthan, with a degree in bachelor of commerce. In his free time, he loves to play sports and travel with family.","url":"https://republicquote.com/author/karunanidhisharma/","sameAs":[],"image":{"@type":"ImageObject","url":"https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=96&d=mm&r=g","height":96,"width":96}},"publisher":{"@type":"Organization","name":"Republic Quote","url":"https://republicquote.com","logo":{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/2022/04/Republic-Quote-Logo.png","width":"200","height":"76"}},"image":[{"@type":"ImageObject","@id":"https://republicquote.com/pune-quotes/#primaryimage","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x900.webp","width":"1200","height":"900","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x720.webp","width":"1200","height":"720","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x675.webp","width":"1200","height":"675","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp","width":600,"height":600,"caption":"Best Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp","width":600,"height":600,"caption":"Pune City Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp","width":600,"height":600,"caption":"Pune Quotes in English"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp","width":600,"height":600,"caption":"Pune Captions For Instagram"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp","width":600,"height":600,"caption":"Leaving Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Sayings.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp","width":600,"height":600}]},
+
+{"@context":"https://schema.org/","@type":"ImageObject","@id":"https://republicquote.com/pune-quotes/#imageobject","url":"https://republicquote.com/pune-quotes/","datePublished":"2023-02-28T23:49:47+05:30","dateModified":"2023-02-28T23:50:12+05:30","name":"55+ Best Pune Quotes and Captions For Instagram 2023","description":"Pune Quotes and Captions 1. Pune is calling my name! 2. Pune is top of my bucket list. 3. I love Pune. 4. Life is short, and the world is","contentUrl":"https://republicquote.com/pune-quotes/","uploadDate":"2023-02-28T23:49:47+05:30","author":{"@type":"Person","name":"Karuna Nidhi","description":"Karuna Nidhi Sharma is a passionate digital marketer. He loves to content for the audience and share his knowledge with others. He completed his graduation from Kota, Rajasthan, with a degree in bachelor of commerce. In his free time, he loves to play sports and travel with family.","url":"https://republicquote.com/author/karunanidhisharma/","sameAs":[],"image":{"@type":"ImageObject","url":"https://secure.gravatar.com/avatar/52164a3fcd1c398ad957834a66fea7cc?s=96&d=mm&r=g","height":96,"width":96}},"publisher":{"@type":"Organization","name":"Republic Quote","url":"https://republicquote.com","logo":{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/2022/04/Republic-Quote-Logo.png","width":"200","height":"76"}},"image":[{"@type":"ImageObject","@id":"https://republicquote.com/pune-quotes/#primaryimage","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x900.webp","width":"1200","height":"900","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x720.webp","width":"1200","height":"720","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x675.webp","width":"1200","height":"675","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp","width":600,"height":600,"caption":"Best Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp","width":600,"height":600,"caption":"Pune City Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp","width":600,"height":600,"caption":"Pune Quotes in English"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp","width":600,"height":600,"caption":"Pune Captions For Instagram"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp","width":600,"height":600,"caption":"Leaving Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Sayings.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp","width":600,"height":600}]},
+
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://republicquote.com#Organization","name":"Republic Quote","url":"https://republicquote.com","sameAs":[],"legalName":"Republic Quote","logo":{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/2022/04/Republic-Quote-Logo.png","width":"200","height":"76"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+91-9660252222","url":"https://republicquote.com/contact-us/"},"image":[{"@type":"ImageObject","@id":"https://republicquote.com/pune-quotes/#primaryimage","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x900.webp","width":"1200","height":"900","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x720.webp","width":"1200","height":"720","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-1200x675.webp","width":"1200","height":"675","caption":"Pune quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Best-Pune-Quotes.webp","width":600,"height":600,"caption":"Best Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-City-Quotes.webp","width":600,"height":600,"caption":"Pune City Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Quotes-On-Pune-City.webp","width":600,"height":600,"caption":"Pune Quotes in English"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Captions-For-Instagram.webp","width":600,"height":600,"caption":"Pune Captions For Instagram"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Missing-Pune-Quotes.webp","width":600,"height":600,"caption":"Leaving Pune Quotes"},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Leaving-Pune-Quotes.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Sayings.webp","width":600,"height":600},{"@type":"ImageObject","url":"https://republicquote.com/wp-content/uploads/Pune-Quotes-in-English.webp","width":600,"height":600}]}]
+</script>
+
+					<div class="ez-toc-sticky">
+				        <div class="ez-toc-sticky-fixed hide">
+		                    <div class='ez-toc-sidebar'><div class="ez-toc-sticky-title-container">
+<p class="ez-toc-sticky-title">Table of Contents</p>
+<a class="ez-toc-close-icon" href="javascript:void(0)" onclick="ezTOC_hideBar(event)" aria-label="×"><span aria-hidden="true">×</span></a>
+</div>
+<div id="ez-toc-sticky-container" class="ez-toc-sticky-v2_0_52 counter-flat ez-toc-sticky-toggle-counter">
+<nav class='ez-toc-sticky-toggle-direction'><ul class='ez-toc-sticky-list ez-toc-sticky-list-level-1 ' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#Best_Pune_Quotes" title="Best Pune Quotes">Best Pune Quotes</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#Crazy_Pune_Captions_for_Instagram" title="Crazy Pune Captions for Instagram">Crazy Pune Captions for Instagram</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#Pune_Sayings" title="Pune Sayings&nbsp;">Pune Sayings&nbsp;</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-4" href="#Why_Should_You_Visit_Pune" title="Why Should You Visit Pune?">Why Should You Visit Pune?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#Best_Places_To_Visit_In_Pune" title="Best Places To Visit In Pune">Best Places To Visit In Pune</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-6" href="#1_Rajgarh_Fort" title="1. Rajgarh Fort">1. Rajgarh Fort</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-7" href="#2_Dagdusheth_Halwai_Temple" title="2. Dagdusheth Halwai Temple">2. Dagdusheth Halwai Temple</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-8" href="#3_Osho_Ashram" title="3. Osho Ashram">3. Osho Ashram</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#4_Sinhagarh_Fort" title="4. Sinhagarh Fort">4. Sinhagarh Fort</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-10" href="#5_Pune_Okayama_Friendship_Garden" title="5. Pune Okayama Friendship Garden">5. Pune Okayama Friendship Garden</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-11" href="#Conclusion" title="Conclusion">Conclusion</a></li></ul></li></ul></li></ul></nav></div>
+</div>
+				        </div>
+			            <a class='ez-toc-open-icon' href='javascript:void(0)' onclick='ezTOC_showBar(event)'>
+                            <span class="arrow">&#8594;</span>
+                            <span class="text">Index</span>
+                        </a>
+					</div><style id='core-block-supports-inline-css'>
+.wp-container-5.wp-container-5,.wp-container-8.wp-container-8,.wp-container-11.wp-container-11,.wp-container-14.wp-container-14{flex-wrap:nowrap;}
+</style>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src='https://republicquote.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1690041134' id='swv-js' defer></script>
+<script id='contact-form-7-js-extra'>
+var wpcf7 = {"api":{"root":"https:\/\/republicquote.com\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src='https://republicquote.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1690041134' id='contact-form-7-js' defer></script>
+<script type="rocketlazyloadscript" id="ez-toc-sticky-js-after">
+function ezTOC_hideBar(e) { var sidebar = document.querySelector(".ez-toc-sticky-fixed"); if ( typeof(sidebar) !== "undefined" && sidebar !== null ) { sidebar.classList.remove("show"); sidebar.classList.add("hide"); setTimeout(function() { document.querySelector(".ez-toc-open-icon").style = "z-index: 9999999"; }, 200); } } function ezTOC_showBar(e) { document.querySelector(".ez-toc-open-icon").style = "z-index: -1;";setTimeout(function() { var sidebar = document.querySelector(".ez-toc-sticky-fixed"); sidebar.classList.remove("hide"); sidebar.classList.add("show"); }, 200); } (function() { let ez_toc_sticky_fixed_container = document.querySelector('div.ez-toc-sticky-fixed');if(ez_toc_sticky_fixed_container) { document.body.addEventListener("click", function (evt) { ezTOC_hideBar(evt); }); ez_toc_sticky_fixed_container.addEventListener('click', function(event) { event.stopPropagation(); }); document.querySelector('.ez-toc-open-icon').addEventListener('click', function(event) { event.stopPropagation(); }); } })();
+</script>
+<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/republicquote.com","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-includes/js/comment-reply.min.js?ver=6.3' id='comment-reply-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js' defer></script>
+<script id='oceanwp-main-js-extra'>
+var oceanwpLocalize = {"nonce":"962ec77bd1","isRTL":"","menuSearchStyle":"drop_down","mobileMenuSearchStyle":"disabled","sidrSource":null,"sidrDisplace":"1","sidrSide":"left","sidrDropdownTarget":"link","verticalHeaderTarget":"link","customScrollOffset":"0","customSelects":".woocommerce-ordering .orderby, #dropdown_product_cat, .widget_categories select, .widget_archive select, .single-product .variations_form .variations select"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/theme.min.js?ver=3.4.7' id='oceanwp-main-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/drop-down-mobile-menu.min.js?ver=3.4.7' id='oceanwp-drop-down-mobile-menu-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/drop-down-search.min.js?ver=3.4.7' id='oceanwp-drop-down-search-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/equal-height-elements.min.js?ver=3.4.7' id='oceanwp-equal-height-elements-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/vendors/magnific-popup.min.js?ver=3.4.7' id='ow-magnific-popup-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/ow-lightbox.min.js?ver=3.4.7' id='oceanwp-lightbox-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/vendors/flickity.pkgd.min.js?ver=3.4.7' id='ow-flickity-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/ow-slider.min.js?ver=3.4.7' id='oceanwp-slider-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/scroll-effect.min.js?ver=3.4.7' id='oceanwp-scroll-effect-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://republicquote.com/wp-content/themes/oceanwp/assets/js/select.min.js?ver=3.4.7' id='oceanwp-select-js' defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://republicquote.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi_webp/ID/hqdefault.webp" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi_webp/ID/hqdefault.webp" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1691612438 -->
